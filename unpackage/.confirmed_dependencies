@@ -1,0 +1,37 @@
+{
+	"index.html": {
+		"resources": [
+			"a.html"
+		],
+		"refer": [
+			"a.html",
+			"b.html",
+			"d.html",
+			"c.html"
+		]
+	},
+	"a.html": {
+		"refer": [
+			"c.html",
+			"e.html"
+		]
+	},
+	"c.html": {
+		"refer": [
+			"a.html"
+		]
+	},
+	"d.html": {
+		"refer": [
+			"login.html"
+		]
+	},
+	"login.html": {
+		"refer": [
+			"a.html",
+			"main.html",
+			"index.html",
+			"d.html"
+		]
+	}
+}

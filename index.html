@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<nav class="mui-bar mui-bar-tab">
+
+			<a class="mui-tab-item mui-active" href='a.html'>
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href='b.html'>
+				<span class="mui-icon mui-icon-map"></span>
+				<span class="mui-tab-label">产品</span>
+			</a>
+			<a class="mui-tab-item" href='c.html'>
+				<span class="mui-icon mui-icon-chatboxes"></span>
+				<span class="mui-tab-label">资产</span>
+			</a>
+			<a class="mui-tab-item" href='d.html'>
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+
+			mui.plusReady(function() {
+
+				
+				//plus.webview.open(this.getAttribute("href"))
+
+				var webview = plus.webview.currentWebview();
+				//获取主视口
+
+				var arrView = [
+					"a.html",
+					"b.html",
+					"c.html",
+					'd.html'
+				]
+				var styles = {
+					top:"0",
+					bottom:"50px"
+				};
+				
+
+				for(var i = 0; i < arrView.length; i++) {
+
+					var item = plus.webview.create(arrView[i], arrView[i],styles);
+					//创建子视口
+					item.hide();
+					//隐藏子视口
+					webview.append(item);
+				}
+
+				plus.webview.show(arrView[0])
+				
+				mui('.mui-bar').on('tap', 'a', function() {
+
+					var hrefUrl = this.getAttribute('href');
+					
+					plus.webview.show(hrefUrl);
+
+				})
+
+			})
+		</script>
+	</body>
+
+</html>
